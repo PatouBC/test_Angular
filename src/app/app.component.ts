@@ -8,3 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'toto';
 }
+export class SidenavOpenCloseExample {
+  events: string[] = [];
+  opened: boolean;
+
+  shouldRun = true;
+}
