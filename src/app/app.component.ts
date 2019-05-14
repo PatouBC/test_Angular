@@ -6,10 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'toto';
-}
-export class SidenavOpenCloseExample {
-  events: string[] = [];
+  title = 'My Application';
   opened: boolean;
 
   shouldRun = true;
