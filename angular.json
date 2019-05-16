@@ -27,15 +27,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/material-icons/iconfont/material-icons.scss",
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            "node_modules/material-icons/iconfont/material-icons.scss",
+            "src/styles.scss",
+            "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
+            "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {

@@ -29,11 +29,20 @@
       </span>
       <span>{{title}}</span>
       <span class="remaining-space"></span>
-      <span>Right Aligned Text</span>
+      <span>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons-outlined">account_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/login" routerLinkActive="active">
+            <span>Se Connecter</span>
+          </button>
+        </mat-menu>
+      </span>
     </mat-toolbar>
     <div class="container-fluid test">
       <router-outlet></router-outlet>
-    </div>>
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

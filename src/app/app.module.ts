@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, 
-  MatButtonModule, MatExpansionModule, MatListModule } from '@angular/material';
+         MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule, 
+         MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TaskComponent } from './page/task/task.component';
 import { CategoryComponent } from './page/category/category.component';
+import { LoginComponent } from './page/login/login.component';
 
 
 const appRoutes: Routes = [
   { path:'task', component: TaskComponent, data : { title: 'Liste des Tâches' } },
   { path:'category', component: CategoryComponent, data : { title: 'Liste des Catégories' } },
+  { path:'login', component: LoginComponent, data : { title: 'Connexion' } },
   { path:'', redirectTo:'/task', pathMatch: 'full' },  
   { path:'**', component: AppComponent }
 ];
@@ -23,11 +26,13 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TaskComponent,
-    CategoryComponent
+    CategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
@@ -36,6 +41,10 @@ const appRoutes: Routes = [
     MatListModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatCardModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
