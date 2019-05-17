@@ -27,9 +27,8 @@
           <mat-icon>view_headline</mat-icon>
         </button>
       </span>
-      <span>{{title}}</span>
       <span class="remaining-space"></span>
-      <span>
+      <span *ngIf="!isConnected()">        
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon class="material-icons-outlined">account_box</mat-icon>
         </button>
@@ -38,6 +37,23 @@
             <span>Se Connecter</span>
           </button>
         </mat-menu>
+        <span>Non connecté</span>
+      </span>
+      <span *ngIf="isConnected()">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons">account_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">account_box</mat-icon>
+            <span>Mon Profile</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon class="material-icons">close</mat-icon>
+            <span>Se Déconnecter</span>
+          </button>
+        </mat-menu>
+        <span>{{ user?.username }} </span>
       </span>
     </mat-toolbar>
     <div class="container-fluid test">

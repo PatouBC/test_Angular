@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,26 +11,38 @@ import { AuthService } from '../../service/auth.service';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public connexionFailed: boolean;
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+      if(this.auth.isConnected()){
+        this.router.navigate(['/task']);
+      }
+   }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username : ['', Validators.required],
-      password : ['', Validators.required]      
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
-  login(){
+  login() {
     this.connexionFailed = false
     const val = this.loginForm.value;
-    if(val.username && val.password){
-      this.auth.login(val.username, val.password).subscribe(
-          () => {
-            console.log('CONNECTED');
-          },
+    if (val.username && val.password) {
+      this.auth.login(val.username, val.password)
+        .subscribe(() => {
+          this.auth.profile()
+            .subscribe(
+              (user) => {
+              this.router.navigate(['/tak']);
+             },
+            (err) => {
+              console.error(err);
+              this.connexionFailed = true;
+            });
+        },
           (err) => {
-          console.error(err);
-          this.connexionFailed = true;
-      } );
+            console.error(err);
+            this.connexionFailed = true;
+          });
     }
   }
 }

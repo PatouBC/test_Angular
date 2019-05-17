@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, 
          MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule, 
          MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { AppComponent } from './app.component';
 import { TaskComponent } from './page/task/task.component';
 import { CategoryComponent } from './page/category/category.component';
 import { LoginComponent } from './page/login/login.component';
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatMenuModule,
     MatCardModule,
+    NgbModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
