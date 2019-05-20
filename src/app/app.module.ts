@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, 
          MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule, 
-         MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+         MatCardModule, MatFormFieldModule, MatInputModule, MatTableModule,
+        MatProgressSpinnerModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -19,6 +20,8 @@ import { JwtInterceptor } from './class/jwtinterceptor';
 import { ErrorInterceptor } from './class/error-interceptor';
 import { ProductComponent } from './page/product/product.component';
 import { IsSignedInGuard } from './guard/is-signed-in.guard';
+import { IndicationComponent } from './page/indication/indication.component';
+import { IndicationAddComponent } from './page/indication/indication-add/indication-add.component';
 
 
 const appRoutes: Routes = [
@@ -28,8 +31,10 @@ const appRoutes: Routes = [
     canActivate: [IsSignedInGuard] },
   { path: 'category', component: CategoryComponent, data : { title: 'Liste des Catégories' } },
   { path: 'product', component: ProductComponent, data : { title: 'Fleurs et Elixirs' } },
+  { path: 'indication', component: IndicationComponent, data : { title: 'Indications' } },
+  { path: 'indication/add', component: IndicationAddComponent, data : { title: 'Indications : création'} },
   { path: 'login', component: LoginComponent, data : { title: 'Connexion' } },
-  { path: '', redirectTo:'/task', pathMatch: 'full' },  
+  { path: '', redirectTo: '/task', pathMatch: 'full' },  
   { path: '**', component: AppComponent }
 ];
 
@@ -39,7 +44,9 @@ const appRoutes: Routes = [
     TaskComponent,
     CategoryComponent,
     LoginComponent,
-    ProductComponent
+    ProductComponent,
+    IndicationComponent,
+    IndicationAddComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatMenuModule,
     MatCardModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
     NgbModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
