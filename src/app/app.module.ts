@@ -17,14 +17,20 @@ import { CategoryComponent } from './page/category/category.component';
 import { LoginComponent } from './page/login/login.component';
 import { JwtInterceptor } from './class/jwtinterceptor';
 import { ErrorInterceptor } from './class/error-interceptor';
+import { ProductComponent } from './page/product/product.component';
+import { IsSignedInGuard } from './guard/is-signed-in.guard';
 
 
 const appRoutes: Routes = [
-  { path:'task', component: TaskComponent, data : { title: 'Liste des Tâches' } },
-  { path:'category', component: CategoryComponent, data : { title: 'Liste des Catégories' } },
-  { path:'login', component: LoginComponent, data : { title: 'Connexion' } },
-  { path:'', redirectTo:'/task', pathMatch: 'full' },  
-  { path:'**', component: AppComponent }
+  { path: 'task',
+   component: TaskComponent,
+    data : { title: 'Liste des Tâches' },
+    canActivate: [IsSignedInGuard] },
+  { path: 'category', component: CategoryComponent, data : { title: 'Liste des Catégories' } },
+  { path: 'product', component: ProductComponent, data : { title: 'Fleurs et Elixirs' } },
+  { path: 'login', component: LoginComponent, data : { title: 'Connexion' } },
+  { path: '', redirectTo:'/task', pathMatch: 'full' },  
+  { path: '**', component: AppComponent }
 ];
 
 @NgModule({
@@ -32,7 +38,8 @@ const appRoutes: Routes = [
     AppComponent,
     TaskComponent,
     CategoryComponent,
-    LoginComponent
+    LoginComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

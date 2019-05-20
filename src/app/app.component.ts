@@ -9,6 +9,7 @@ import { User } from './class/user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  title = " Mon appli ";
   opened: boolean;
   user: User|null;
   shouldRun = true;

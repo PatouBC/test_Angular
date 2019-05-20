@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           this.auth.profile()
             .subscribe(
               (user) => {
-              this.router.navigate(['/tak']);
+              this.router.navigate(['/task']);
              },
             (err) => {
               console.error(err);
