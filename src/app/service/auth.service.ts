@@ -16,7 +16,7 @@ export class AuthService {
   private loginObs: Observable<Login>;
 
   private userSubject: BehaviorSubject<User>;
-  private userObs: Observable<User>;  
+  private userObs: Observable<User>;
 
   constructor(private http: HttpClient) {
     const token = JSON.parse(localStorage.getItem(Globals.APP_USER_TOKEN));
@@ -25,20 +25,20 @@ export class AuthService {
 
     const user = JSON.parse(localStorage.getItem(Globals.APP_USER));
     this.userSubject = new BehaviorSubject<User>(user);
-    this.userObs = this.userSubject.asObservable();      
+    this.userObs = this.userSubject.asObservable();
     }
 
-    public login(username: string, password: string){
+    public login(username: string, password: string) {
       return this.http.post<Login>(Globals.APP_API + 'login_check', {username, password})
       .pipe(map((data) => {
-        if(data && data.token){
+        if (data && data.token) {
           localStorage.setItem(Globals.APP_USER_TOKEN, JSON.stringify(data));
           this.loginSubject.next(data);
         }
         return data;
       }));
   }
-  public get tokenData(){
+  public get tokenData() {
     return JSON.parse(localStorage.getItem(Globals.APP_USER_TOKEN));
   }
 
@@ -46,16 +46,16 @@ export class AuthService {
     return !!this.loginSubject.value && !!this.userSubject.value;
   }
 
-  public logout(){
+  public logout() {
     localStorage.removeItem(Globals.APP_USER_TOKEN);
     localStorage.removeItem(Globals.APP_USER);
     this.loginSubject.next(null);
     this.userSubject.next(null);
   }
-  public profile(){
+  public profile() {
     return this.http.get<User>(Globals.APP_API + 'auth/profile', {})
     .pipe(map((user) => {
-      if(user){
+      if (user) {
         localStorage.setItem(Globals.APP_USER, JSON.stringify(user));
         this.userSubject.next(user);
         this.userObs = this.userSubject.asObservable();

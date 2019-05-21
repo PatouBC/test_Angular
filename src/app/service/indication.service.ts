@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class IndicationService {
 
-
   constructor(private http: HttpClient, private router: Router) { }
 
 
@@ -29,7 +28,7 @@ export class IndicationService {
 
   createIndication(description: string) {
     const data = { description };
-    return this.http.post(Globals.APP_API + 'indication', data);
+    return this.http.post(Globals.APP_API + 'indication/new', data);
   }
 
   editIndication(id: number, description: string) {

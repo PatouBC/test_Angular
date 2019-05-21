@@ -48,7 +48,7 @@ export class TitleService {
           }
         }))
         .subscribe((pathString) => {this.titleService.setTitle(`${pathString} - ${Globals.APP_TAB_TITLE}`);
-        this.currentTitle = pathString;
+         this.currentTitle = pathString;
       });
   }
 }

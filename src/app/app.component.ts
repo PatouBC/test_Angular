@@ -8,8 +8,8 @@ import { User } from './class/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  title = " Mon appli ";
+export class AppComponent implements OnInit {
+  title = 'Mon appli' ;
   opened: boolean;
   user: User|null;
   shouldRun = true;
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
     this.titleService.init();
   }
 
-  isConnected(): boolean{
+  isConnected(): boolean {
     this.user = this.auth.currentUser;
     return this.auth.isConnected();
   }

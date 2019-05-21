@@ -5,8 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, 
-         MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule, 
+import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule,
+         MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule,
          MatCardModule, MatFormFieldModule, MatInputModule, MatTableModule,
         MatProgressSpinnerModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
