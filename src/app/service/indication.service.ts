@@ -2,30 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Globals } from '../globals';
 import { Router } from '@angular/router';
+import { Indication } from '../class/indication';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class IndicationService {
+ private uri = Globals.APP_API + 'indication';
 
   constructor(private http: HttpClient, private router: Router) { }
-  uri = Globals.APP_API + 'indication';
+
 
   getIndications() {
-    return this.http.get(this.uri);
+    return this.http.get(`${this.uri}`);
 
   }
 
-  getIndicationById(id: string){
-    return this.http.get(this.uri + '/' + id);
+
+  deleteIndication(id: number){
+    return this.http.delete(Globals.APP_API + 'indication' + '/' + id);
   }
 
-  deleteIndication(id: string){
-    return this.http.delete(this.uri + '/' + id);
-  }
-
-  createIndication(): void {
-    this.router.navigate(['indication/add']);
+  createIndication(description: string) {
+    const data = { description };
+    return this.http.post(`${this.uri}/new`, data);
   }
 }

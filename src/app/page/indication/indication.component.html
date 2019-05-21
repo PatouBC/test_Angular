@@ -11,18 +11,21 @@
     </thead>
     <tbody>
       <tr *ngFor="let indication of indications">
-        <td>{{indication.id}}</td>
-        <td>{{indication.description}}</td>
+        <td>{{ indication.id }}</td>
+        <td>{{ indication.description }}</td>
         <td>
-          <div>
-              <button class="btn btn-info">Edit</button>
-          </div>
-          <div>
-              <button (click)="deleteIndication(indication.id)" class = "btn btn-danger">Delete</button>
-          </div>
+          <button class="btn btn-info">
+            <mat-icon>add_circle</mat-icon>  
+          </button>
+
+          <button (click)="deleteIndication(indication.id)" class = "btn btn-danger">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>        
       </tr>
     </tbody>
   </table>
-  <button (click)="createIndication()" class = "btn btn-success">Ajouter</button>
+  <button (click)="createIndication()" class = "btn btn-success">
+    <mat-icon>add_circle</mat-icon>
+  </button>
 </div>

@@ -9,26 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./indication.component.scss']
 })
 export class IndicationComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'description'];
+  error: boolean;
   indications: Indication[];
-  isLoadingResults = true;
+  loading: boolean;
 
-  constructor(private ind: IndicationService, private router: Router) { }
+  constructor(private indServ: IndicationService, private router: Router) { }
 
   ngOnInit() {
     this.getIndications();
     }
 
-  getIndications(): void {
-    this.ind.getIndications()
+  getIndications() {
+    this.indServ.getIndications()
     .subscribe((data: Indication[]) => {
       this.indications = data;
     });
   }
 
-  deleteIndication(id) {
-    this.ind.deleteIndication(id)
-    .subscribe(data => {
+  deleteIndication(id: number) {
+    this.loading = true;
+    this.indServ.deleteIndication(id)
+    .subscribe( () => {
       this.getIndications();
     });
   }

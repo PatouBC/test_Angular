@@ -20,22 +20,38 @@ import { JwtInterceptor } from './class/jwtinterceptor';
 import { ErrorInterceptor } from './class/error-interceptor';
 import { ProductComponent } from './page/product/product.component';
 import { IsSignedInGuard } from './guard/is-signed-in.guard';
+
 import { IndicationComponent } from './page/indication/indication.component';
 import { IndicationAddComponent } from './page/indication/indication-add/indication-add.component';
 
 
 const appRoutes: Routes = [
   { path: 'task',
-   component: TaskComponent,
+    component: TaskComponent,
     data : { title: 'Liste des Tâches' },
     canActivate: [IsSignedInGuard] },
-  { path: 'category', component: CategoryComponent, data : { title: 'Liste des Catégories' } },
-  { path: 'product', component: ProductComponent, data : { title: 'Fleurs et Elixirs' } },
-  { path: 'indication', component: IndicationComponent, data : { title: 'Indications' } },
-  { path: 'indication/add', component: IndicationAddComponent, data : { title: 'Indications : création'} },
-  { path: 'login', component: LoginComponent, data : { title: 'Connexion' } },
-  { path: '', redirectTo: '/task', pathMatch: 'full' },  
-  { path: '**', component: AppComponent }
+  { path: 'category',
+    component: CategoryComponent,
+    data : { title: 'Liste des Catégories' } },
+  { path: 'product',
+    component: ProductComponent,
+    data : { title: 'Fleurs et Elixirs' } },
+  { path: 'indication',
+    component: IndicationComponent,
+    canActivate: [IsSignedInGuard],
+    data : { title: 'Indications' } },
+  { path: 'indication/add',
+    component: IndicationAddComponent,
+    canActivate: [IsSignedInGuard],
+    data : { title: 'Indications : création'} },
+  { path: 'login',
+    component: LoginComponent,
+    data : { title: 'Connexion' } },
+  { path: '',
+    redirectTo: '/task',
+    pathMatch: 'full' },
+  { path: '**',
+    component: AppComponent }
 ];
 
 @NgModule({
