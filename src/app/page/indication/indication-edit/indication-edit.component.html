@@ -1,0 +1,34 @@
+<p>
+    indication-add works!
+</p>
+  <div class="example-container mat-elevation-z8">
+      <div class="example-loading-shade"
+           *ngIf="loading">
+        <mat-spinner  *ngIf="loading" [diameter]="20"></mat-spinner>
+      </div>
+      <mat-card class="example-card">
+        <form [formGroup]="indicForm" >
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Indication description" formControlName="description">
+            <mat-error>
+              <span *ngIf="!indicForm.get('description').valid && indicForm.get('description').touched">
+                Veuillez saisir une description</span>
+            </mat-error>
+          </mat-form-field>
+          
+          <div class="button-row">
+            <button type="submit" 
+            [disabled]="!indicForm.valid" 
+            mat-flat-button color="primary"
+            (click)="saveIndication()">Enregistrer</button>
+          </div>
+          <div class="button-row">
+            <a mat-flat-button color="primary" (click)="backClicked()">
+              <mat-icon>list</mat-icon>
+              <span>Annuler</span>
+            </a>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  

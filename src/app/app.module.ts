@@ -23,6 +23,7 @@ import { IsSignedInGuard } from './guard/is-signed-in.guard';
 
 import { IndicationComponent } from './page/indication/indication.component';
 import { IndicationAddComponent } from './page/indication/indication-add/indication-add.component';
+import { IndicationEditComponent } from './page/indication/indication-edit/indication-edit.component';
 
 
 const appRoutes: Routes = [
@@ -44,6 +45,10 @@ const appRoutes: Routes = [
     component: IndicationAddComponent,
     canActivate: [IsSignedInGuard],
     data : { title: 'Indications : création'} },
+  { path: 'indication/edit/:id',
+    component: IndicationEditComponent,
+    canActivate: [IsSignedInGuard],
+    data : { title: 'Indications : edit'} },
   { path: 'login',
     component: LoginComponent,
     data : { title: 'Connexion' } },
@@ -62,7 +67,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ProductComponent,
     IndicationComponent,
-    IndicationAddComponent
+    IndicationAddComponent,
+    IndicationEditComponent
   ],
   imports: [
     BrowserModule,

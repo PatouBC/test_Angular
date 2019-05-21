@@ -14,8 +14,8 @@
         <td>{{ indication.id }}</td>
         <td>{{ indication.description }}</td>
         <td>
-          <button class="btn btn-info">
-            <mat-icon>add_circle</mat-icon>  
+          <button class="btn btn-info" routerLink="/indication/edit/{{ indication.id }} " >
+            <mat-icon>edit</mat-icon>  
           </button>
 
           <button (click)="deleteIndication(indication.id)" class = "btn btn-danger">

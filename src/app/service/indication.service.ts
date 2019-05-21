@@ -16,8 +16,12 @@ export class IndicationService {
 
 
   getIndications() {
-    return this.http.get(`${this.uri}`);
+    return this.http.get(Globals.APP_API + 'indication');
 
+  }
+
+  getIndication(id: string) {
+    return this.http.get(Globals.APP_API + 'indication' + '/' + id);
   }
 
 
@@ -28,5 +32,10 @@ export class IndicationService {
   createIndication(description: string) {
     const data = { description };
     return this.http.post(`${this.uri}/new`, data);
+  }
+
+  editIndication(id: number, description: string) {
+    const data = { description };
+    return this.http.put(Globals.APP_API + 'indication' + '/' + id, data);
   }
 }
