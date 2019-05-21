@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, createPlatformFactory } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IndicationService } from 'src/app/service/indication.service';
 import { Router, ActivatedRoute } from '@angular/router';
